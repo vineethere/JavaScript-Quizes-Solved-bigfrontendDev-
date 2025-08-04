@@ -65,15 +65,22 @@ Solution:
 
 
 This is an arrow function. Arrow functions do not have their own this context; they inherit this from their surrounding scope (lexical scoping).
-
 In this case, this is not bound to obj like in the previous cases. Instead, it is bound to the global this (or window in a browser environment, or global in Node.js).
-
 In non-strict mode, this in the global context refers to the global object (window in browsers), but since dev isn't defined in the global context, this.dev is undefined.
-
 Therefore, obj.c() will return undefined.
 
 
+Also,
+f: function() { return this.b }
+this.b here refers to the method b on the obj object.
+When you call obj.f(), this inside f refers to the obj object. So, this.b refers to obj.b, which is a method. f() returns the method b, not the result of b.
+So, when you call obj.f()(), you are invoking the method b, which correctly returns the value of this.dev because b is a regular function and uses the correct this context.
+Why obj.f()() results in undefined:
+You are calling obj.f() first, which returns the function b, but now, when you call b() with (), this inside b is no longer bound to the object obj. Instead, it is bound to the global context (or undefined in strict mode).
+Since dev is not defined in the global context, the result is undefined.
 
+
+Output is
 
 bfe
 bfe
