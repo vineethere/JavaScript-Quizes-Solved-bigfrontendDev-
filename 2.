@@ -1,0 +1,17 @@
+new Promise((resolve, reject) => {
+  resolve(1)
+  resolve(2)
+  reject('error')
+}).then((value) => {
+  console.log(value)
+}, (error) => {
+  console.log('error')
+})
+
+
+
+
+
+Solution:
+However, once a promise is resolved (or rejected), it can't change its state.
+1
