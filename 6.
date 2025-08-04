@@ -1,0 +1,86 @@
+// This is a JavaScript Quiz from BFE.dev
+//https://bigfrontend.dev/quiz/6-Arrow-Function
+
+const obj = {
+  dev: 'bfe',
+  a: function() {
+    return this.dev
+  },
+  b() {
+    return this.dev
+  },
+  c: () => {
+    return this.dev
+  },
+  d: function() {
+    return (() => {
+      return this.dev
+    })()
+  },
+  e: function() {
+    return this.b()
+  },
+  f: function() {
+    return this.b
+  },
+  g: function() {
+    return this.c()
+  },
+  h: function() {
+    return this.c
+  },
+  i: function() {
+    return () => {
+      return this.dev
+    }
+  }
+}
+
+console.log(obj.a())
+console.log(obj.b())
+console.log(obj.c())
+console.log(obj.d())
+console.log(obj.e())
+console.log(obj.f()())
+console.log(obj.g())
+console.log(obj.h()())
+console.log(obj.i()())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Solution:
+
+
+This is an arrow function. Arrow functions do not have their own this context; they inherit this from their surrounding scope (lexical scoping).
+
+In this case, this is not bound to obj like in the previous cases. Instead, it is bound to the global this (or window in a browser environment, or global in Node.js).
+
+In non-strict mode, this in the global context refers to the global object (window in browsers), but since dev isn't defined in the global context, this.dev is undefined.
+
+Therefore, obj.c() will return undefined.
+
+
+
+
+bfe
+bfe
+undefined
+bfe
+bfe
+undefined
+undefined
+undefined
+bfe
