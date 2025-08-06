@@ -1,0 +1,71 @@
+// https://bigfrontend.dev/quiz/Addition-vs-Unary-Plus
+
+console.log(1 + 2)
+console.log(1 + + 2)
+console.log(1 + + + 2)
+console.log(1 + '2')
+console.log(1 + + '2')
+console.log('1' + 2)
+console.log('1' + + 2)
+console.log(1 + true)
+console.log(1 + + true)
+console.log('1' + true)
+console.log('1' + + true)
+console.log(1 + null)
+console.log(1 + + null)
+console.log('1' + null)
+console.log('1' + + null)
+console.log(1 + undefined)
+console.log(1 + + undefined)
+console.log('1' + undefined)
+console.log('1' + + undefined)
+console.log('1' + + + undefined)
+
+
+// console.log('1' + true); = 1true
+// Why?
+// The + operator between a string and another value performs string concatenation.
+// '1' is a string.
+// true is a boolean.
+// The boolean true gets converted to the string "true".
+// Then '1' + 'true' results in '1true'.
+// So the console logs the string "1true".
+
+// but 
+// 1 + true
+
+// What happens?
+// The + operator here is used for addition (since both operands are not strings).
+// 1 is a number.
+// true is a boolean, which gets converted to the number 1 when used in numeric contexts.
+// So the expression becomes: 1 + 1 = 2
+
+// console.log('1' + +true);
+// Step-by-step:
+// true is a boolean.
+// Unary plus (+true) converts true to a number → +true becomes 1.
+// So the expression becomes '1' + 1.
+// '1' is a string, so the + operator here performs string concatenation.
+// '1' + 1 results in the string '11'.
+
+Output:
+3
+3
+3
+12
+3
+12
+12
+2
+2
+1true
+11
+1
+1
+1null
+10
+NaN
+NaN
+1undefined
+1NaN
+1NaN
