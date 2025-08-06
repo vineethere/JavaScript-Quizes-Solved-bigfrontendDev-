@@ -1,0 +1,29 @@
+// https://bigfrontend.dev/quiz/arguments
+
+function log(a,b,c,d) {
+  console.log(a,b,c,d)
+  arguments[0] = 'bfe'
+  arguments[3] = 'dev'
+ 
+  console.log(a,b,c,d)
+}
+
+log(1,2,3)
+
+
+
+
+// Key detail: arguments and parameters linkage only works for existing parameters.
+// You called log(1, 2, 3) — only 3 arguments were passed, so d is undefined.
+// The arguments object inside the function has only 3 elements indexed 0, 1, 2:
+// arguments.length === 3
+// arguments[0] = 1, arguments[1] = 2, arguments[2] = 3
+// arguments[3] is undefined (does not exist in arguments object)
+// The arguments object and named parameters are linked in non-strict mode.
+// Modifying arguments updates the named parameters.
+// Passing fewer arguments means the trailing parameters are undefined, but if you set arguments at those indexes, they update the corresponding parameters.
+
+
+//output :
+1 2 3 undefined
+bfe 2 3 undefined
