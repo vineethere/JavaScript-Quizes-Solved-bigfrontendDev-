@@ -1,0 +1,43 @@
+// https://bigfrontend.dev/quiz/reduce
+
+[1,2,3].reduce((a,b) => {
+  console.log(a,b)
+});
+
+[1,2,3].reduce((a,b) => {
+  console.log(a,b)
+}, 0)
+
+// ✅ .reduce() Summary:
+// Basic Syntax:
+// array.reduce((accumulator, currentValue) => { ... }, initialValue)
+// Accumulator (a):
+// Carries over the result from one iteration to the next.
+// Starts with:
+// The first element of the array if no initialValue is provided.
+// The initialValue if one is provided.
+// Current Value (b):
+// The current item being processed in the array.
+// 📌 With Initial Value:
+// [1, 2, 3].reduce((a, b) => { console.log(a, b); }, 0);
+// initialValue = 0
+// First iteration:
+// a = 0, b = 1
+// Iterates over all elements (array.length times)
+// 📌 Without Initial Value:
+// [1, 2, 3].reduce((a, b) => { console.log(a, b); });
+// No initialValue provided
+// a = first element (1), b = second element (2)\
+// Iteration starts from the second element
+// Iterates only array.length - 1 times
+// ⚠️ Important Notes:
+// If you don’t return a value in the callback, undefined becomes the accumulator.
+// Initial value can be any type: number, string, object, array, etc.
+// Always use an initial value for clarity and to avoid unexpected bugs (especially with empty arrays).
+
+
+// Output:
+// [ 0 ]
+// [ 0, NaN ]
+// [ 0, NaN, 1 ]
+// [ 0, NaN, 1, 1 ]
