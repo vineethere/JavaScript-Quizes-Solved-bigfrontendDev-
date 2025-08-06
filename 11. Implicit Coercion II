@@ -1,0 +1,52 @@
+// https://bigfrontend.dev/quiz/Implicit-Conversion-II
+
+console.log([] + [])
+console.log([] + 1)
+console.log([[]] + 1)
+console.log([[1]] + 1)
+console.log([[[[2]]]] + 1)
+console.log([] - 1)
+console.log([[]] - 1)
+console.log([[1]] - 1)
+console.log([[[[2]]]] - 1)
+console.log([] + {})
+console.log({} + {})
+console.log({} - {})
+
+
+
+// console.log([] + 1) why this is 1
+// [] is an empty array.
+// When you use the + operator with an array and a number, JavaScript tries to convert the array to a primitive value first.
+// The default behavior for arrays when converted to a primitive with the + operator is to call the .toString() method.
+// For an empty array, .toString() returns an empty string "".
+// Now the expression becomes: "" + 1.
+// The + operator with a string and a number converts the number to a string and concatenates them.
+// So "" + 1 results in the string "1".
+
+
+
+
+// console.log([] + {})
+// What happens with []?
+// [].toString() → "" (empty string)
+
+// What happens with {}?
+// {} when converted to a primitive tries to call .toString()
+
+// {}.toString() → "[object Object]"
+
+Output 
+
+
+1
+1
+11
+21
+-1
+-1
+0
+1
+[object Object]
+[object Object][object Object]
+NaN
