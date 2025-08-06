@@ -1,0 +1,35 @@
+https://bigfrontend.dev/quiz/parseInt
+
+console.log(['0'].map(parseInt))
+console.log(['0','1'].map(parseInt))
+console.log(['0','1','1'].map(parseInt))
+console.log(['0','1','1','1'].map(parseInt))
+
+//  What is parseInt()?
+// parseInt(string, radix) turns a string into an integer number.
+// radix = base (e.g. 10 for decimal, 2 for binary)
+// Example: parseInt("10", 2) → 2 (binary '10')
+
+//  The Problem with map(parseInt)
+// When you write array.map(parseInt), JavaScript runs:
+
+// js
+// Copy
+// Edit
+// parseInt(value, index)
+// So the index becomes the radix, which causes wrong or NaN results.
+// Example:
+
+// ['0', '1', '1'].map(parseInt)
+
+// Is the same as:
+// [parseInt('0', 0), parseInt('1', 1), parseInt('1', 2)]
+// // → [0, NaN, 1]
+
+
+
+Output:
+[ 0 ]
+[ 0, NaN ]
+[ 0, NaN, 1 ]
+[ 0, NaN, 1, 1 ]
