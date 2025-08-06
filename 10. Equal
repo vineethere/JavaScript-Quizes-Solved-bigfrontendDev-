@@ -1,0 +1,58 @@
+// https://bigfrontend.dev/quiz/Equal-1
+
+
+console.log(0 == false)
+console.log('' == false)
+console.log([] == false)
+console.log(undefined == false)
+console.log(null == false)
+console.log('1' == true)
+console.log(1n == true)
+console.log(' 1     ' == true)
+
+
+
+
+
+
+
+
+
+
+
+//SOlution
+
+. undefined == false → false
+When using ==, JavaScript performs type coercion, but not in the way you might expect here.
+
+undefined is only loosely equal to null.
+
+undefined is not equal to false.
+
+undefined == null      // true
+undefined == false     // false
+So, undefined == false is false because JavaScript does not convert undefined to a number or a boolean during this comparison.
+
+undefined == null	true
+undefined == false	false
+null == false	false
+
+
+You're totally right — 0 is a number, and in JavaScript, 0 == false is indeed true because of type coercion:
+
+0 == false  // true
+But the reason undefined == false and null == false are false even though 0 == false is true boils down to how the JavaScript specification defines the loose equality == rules for these special values.
+
+
+
+
+OUTPUT is:
+
+true
+true
+true
+false
+false
+true
+true
+true
