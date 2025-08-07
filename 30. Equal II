@@ -1,0 +1,49 @@
+// http://bigfrontend.dev/quiz/Equal-II
+
+
+console.log([1] == 1)
+console.log([1] == '1')
+console.log(['1'] == '1')
+console.log(['1'] == 1)
+console.log([1] == ['1'])
+console.log(new Boolean(true) == 1)
+console.log(new Boolean(true) == new Boolean(true))
+console.log(Boolean(true) == '1')
+console.log(Boolean(false) == [0])
+console.log(new Boolean(true) == '1')
+console.log(new Boolean(false) == [0])
+console.log(null == undefined)
+
+
+
+// Key concept: Objects are compared by reference, not by value only in case both sides are Object
+
+
+
+// Explanation:
+// Array to primitive comparison:
+// Arrays like [1] convert to string '1' via .toString(), then the string is coerced to number if needed.
+// Object vs primitive:
+// Objects (including Boolean objects) convert to their primitive value via .valueOf() or .toString() before comparison.
+// Two different objects:
+// Objects are compared by reference, so two arrays with the same contents are false because they are different instances.
+// Boolean objects vs primitives:
+// new Boolean(true) is an object, truthy but not equal to other Boolean objects by reference. Converts to primitive true when compared to number or string.
+// Special cases:
+// null == undefined is always true.
+// Boolean primitives true and false convert to 1 and 0 respectively when compared with numbers or strings.
+
+
+
+// true
+// true
+// true
+// true
+// false
+// true
+// false
+// true
+// true
+// true
+// false
+// true
