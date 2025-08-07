@@ -18,6 +18,29 @@ var func3 = function func4() {
 }
 
 
+
+
+When code runs:
+func1 is assigned a function.
+func1() runs and prints 1.
+func2() runs and prints 2.
+func3() is called but func3 is undefined → causes a TypeError.
+Then func3 is assigned the function expression.
+Important points to remember:
+Function declarations are fully hoisted.
+Variables declared with var are hoisted but initialized as undefined.
+Variables declared with let and const are NOT hoisted for use before declaration.
+Function expressions assigned to var variables cannot be called before assignment.
+Calling a variable holding undefined as a function causes a TypeError.
+Tips:
+Use function declarations if you need functions available anywhere in scope.
+Prefer let and const over var to avoid hoisting confusion.
+Don’t call functions or variables before they are declared or assigned unless you know they are hoisted.
+Remember:
+"Hoisting lifts declarations, but NOT initializations."
+
+
+
 //SOLUTION:
 
 // 1
@@ -28,23 +51,3 @@ var func3 = function func4() {
 // ^
 
 // TypeError: func3 is not a function
-
-
-
-
-// What is Hoisting?
-// Hoisting is JavaScript’s behavior of moving declarations to the top of their scope before the code runs.
-// What gets hoisted and how?
-// var declarations:
-// The variable name is hoisted (known by JavaScript).
-// The value is NOT hoisted and is undefined until assigned.
-// Using the variable before assignment gives undefined.
-// let and const declarations:
-// Are NOT accessible before they are declared.
-// Using them before declaration causes a ReferenceError (called Temporal Dead Zone).
-// Function declarations (using function name() {}):
-// The entire function (name + body) is hoisted.
-// You can call the function before its place in the code.
-// Function expressions assigned to variables declared with var:
-// Only the variable name is hoisted (value is undefined).
-// You cannot call the function before assignment — causes TypeError.
