@@ -1,0 +1,30 @@
+// https://bigfrontend.dev/quiz/Promise-executor-II
+
+
+const p1 = Promise.resolve(1)
+const p2 = new Promise((resolve) => resolve(p1))
+const p3 = Promise.resolve(p1)
+const p4 = p2.then(() => new Promise((resolve) => resolve(p3)))
+const p5 = p4.then(() => p4)
+
+console.log(p1 == p2)
+console.log(p1 == p3)
+console.log(p3 == p4)
+console.log(p4 == p5)
+
+
+false
+true
+false
+false
+
+Promise.resolve(value)
+If value is a promise, it returns the same promise (no wrapping).
+If value is not a promise, it creates a new resolved promise.
+Creating with new Promise(...) always returns a new promise object.
+Promise resolution with another promise (e.g., resolve(p1)) means:
+The outer promise will adopt the state/value of the inner one,
+But it remains a distinct object (not ===).
+.then() always returns a new promise, even if you return the same value inside.
+Self-resolution via .then(() => samePromise) is allowed,
+But still returns a different promise that resolves to the same value.
