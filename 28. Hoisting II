@@ -1,0 +1,50 @@
+// https://bigfrontend.dev/quiz/Hoisting-II
+
+const func1 = () => console.log(1)
+
+func1()
+
+func2()
+
+function func2() {
+  console.log(2)
+}
+
+
+func3()
+
+var func3 = function func4() {
+  console.log(3)
+}
+
+
+//SOLUTION:
+
+// 1
+// 2
+// ERROR!
+// /tmp/7uHtyzi6C9/main.js:12
+// func3()
+// ^
+
+// TypeError: func3 is not a function
+
+
+
+
+// What is Hoisting?
+// Hoisting is JavaScript’s behavior of moving declarations to the top of their scope before the code runs.
+// What gets hoisted and how?
+// var declarations:
+// The variable name is hoisted (known by JavaScript).
+// The value is NOT hoisted and is undefined until assigned.
+// Using the variable before assignment gives undefined.
+// let and const declarations:
+// Are NOT accessible before they are declared.
+// Using them before declaration causes a ReferenceError (called Temporal Dead Zone).
+// Function declarations (using function name() {}):
+// The entire function (name + body) is hoisted.
+// You can call the function before its place in the code.
+// Function expressions assigned to variables declared with var:
+// Only the variable name is hoisted (value is undefined).
+// You cannot call the function before assignment — causes TypeError.
