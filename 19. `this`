@@ -1,0 +1,73 @@
+// https://bigfrontend.dev/quiz/this
+
+const obj = {
+  a: 1,
+  b: function () {
+    console.log(this.a);
+  },
+  c() {
+    console.log(this.a);
+  },
+  d: () => {
+    console.log(this.a);
+  },
+  e: (function () {
+    return () => {
+      console.log(this.a);
+    };
+  })(),
+  f: function () {
+    return () => {
+      console.log(this.a);
+    };
+  },
+};
+
+console.log(obj.a); //1;
+obj.b();             //1;
+obj.b();              //1;
+const b = obj.b;      
+b();                 // why this is undefined ?
+obj.b.apply({ a: 2 });  //2
+obj.c();                //1
+obj.d();                //undefined
+obj.d();                  //undefined
+obj.d.apply({ a: 2 });          //undefined
+obj.e();                  //undefined
+obj.e();                 //undefined
+obj.e.call({ a: 2 });       //why this is undefined?
+obj.f()();                //1
+obj.f()();                //1
+obj.f().call({ a: 2 });    //Explain this
+
+
+
+
+
+
+
+
+
+// Even though we used .apply({ a: 2 }), arrow functions ignore .apply(), .call(), .bind() for setting this. So this.a is still from lexical scope (likely undefined).
+
+// obj.e.call({ a: 2 }); // undefined
+// .call({ a: 2 }) tries to set this, but again: e is an arrow function, and arrow functions ignore .call() for setting this.
+
+
+// obj.f().call({ a: 2 }); // 1
+// Even though we’re using .call({ a: 2 }), it applies to the arrow function returned from f(). But the arrow function’s this is still bound to where it was created — inside f(), where this = obj.
+
+// So this.a = 1, not 2.
+
+
+
+// Key Concepts Recap:
+// Regular functions: this is dynamic — depends on how the function is called.
+
+// Arrow functions: this is lexical — from where the function is defined, cannot be changed by .call(), .apply(), or .bind().
+
+// Methods (regular or shorthand): this is the object the method is called on.
+
+// Detached methods: Lose their this unless explicitly bound.
+
+// Let me know if you want a visual diagram of the this bindings or want to test this in a browser!
