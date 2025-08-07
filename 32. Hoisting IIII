@@ -1,0 +1,65 @@
+// https://bigfrontend.dev/quiz/Hoisting-IIII
+
+var d = 1;
+
+(function(){
+  d = '2'
+  console.log(typeof d)
+  function d() {
+  }
+})()
+
+console.log(typeof d)
+
+var e = 1
+const f = function e() {}
+
+console.log(typeof e)
+
+
+
+
+
+// var a = 1
+// function a() {}
+// console.log(typeof a)
+// What happens here?
+// Function declarations are hoisted before var declarations.
+// But var a = 1 overwrites the function declaration at runtime.
+// So by the time we reach console.log(typeof a), a is the number 1.
+
+
+// function c() {}  // Hoisted
+// var c;           // Ignored, already declared
+// c = 1;           // Overwrites function with number
+// output: number
+
+
+// (function(){
+//   function d() {}      // Hoisted
+//   d = '2'              // Reassigns inner `d`, not the outer one
+//   console.log(typeof d)  // typeof '2' is 'string'
+// })()
+
+
+// var e = 1
+// const f = function e() {}
+// console.log(typeof e)
+// var e = 1
+// const f = function e() {}
+// console.log(typeof e)
+// This is a function expression with a named function:
+// const f = function e() {} creates a function named e, but e is only accessible inside the function body.
+// It does NOT overwrite the outer var e.
+// So:
+// var e = 1 declares a number.
+// The inner function e() is scoped only inside the function f.
+// So typeof e still sees the outer e, which is 1.
+// ✅ typeof e → 'number'
+
+
+
+// Output 
+// string
+// number
+// number
