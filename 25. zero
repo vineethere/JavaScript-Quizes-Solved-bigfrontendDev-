@@ -1,0 +1,92 @@
+// https://bigfrontend.dev/quiz/zero
+
+console.log(1 / 0)
+console.log(-1 / 0)
+console.log(0 / 0)
+console.log(0 === -0)
+console.log(Object.is(0, -0))
+console.log(Object.is(0, Math.round(-0.5)))
+console.log(Object.is(0, Math.round(0.5)))
+console.log(0 * Infinity)
+console.log(Infinity / Infinity)
+console.log(Object.is(0, Math.sign(0)))
+console.log(Object.is(0, Math.sign(-0)))
+console.log(1 / -0)
+console.log(1 / 0)
+console.log(1n / 0n)
+
+
+
+
+
+// In JavaScript, the strict equality operator (===) considers 0 and -0 to be equal:
+// 0 === -0 returns true
+// This is because === checks type and value, and JavaScript considers both 0 and -0 to be the same value when using strict equality.
+// However, there is a way to distinguish 0 and -0:a
+//  console.log(Object.is(0, -0)); // false
+//  Object.is() is a more precise comparison that does distinguish 0 from -0, and also treats NaN as equal to itself.
+
+
+
+// Math.round(-0.5)
+// Math.round() rounds to the nearest integer.
+// For negative numbers, it rounds away from zero if halfway.
+// So, Math.round(-0.5) returns -0.
+// Object.is(0, -0)
+// Object.is() is similar to ===, but with two key differences:
+// It treats NaN as equal to NaN.
+// It distinguishes 0 and -0.
+// Math.round(0.5)
+// Rounds to the nearest integer.
+// For halfway values (like 0.5), JavaScript rounds away from zero.
+// So:
+// Math.round(0.5) // → 1
+// Object.is(0, 1)
+// Clearly, 0 and 1 are different numbers.
+// So:
+// Object.is(0, 1) // → false
+
+
+
+
+
+// console.log(Object.is(0, Math.sign(0)));
+// What happens here?
+// Math.sign(0) returns the sign of 0.
+// According to the spec, Math.sign(0) returns 0 (positive zero).
+// So, Math.sign(0) === 0.
+// console.log(1n / 0n);
+// will throw a runtime error in JavaScript because:
+// 1n and 0n are BigInt values.
+// Division by zero is not allowed for BigInts.
+// Unlike regular numbers where 1 / 0 results in Infinity, BigInt division by zero throws an error.
+
+
+
+
+
+
+
+
+
+
+// Output
+
+
+// Infinity
+// -Infinity
+// NaN
+// true
+// false
+// false
+// false
+// NaN
+// NaN
+// true
+// false
+// -Infinity
+// Infinity
+// ERROR!
+// /tmp/LVNf4IJmMd/main.js:16
+// console.log(1n / 0n)
+//               ^
