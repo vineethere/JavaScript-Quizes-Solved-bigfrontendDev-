@@ -1,0 +1,52 @@
+var a = 1
+
+function func() {
+  a = 2
+  console.log(a)
+  var a
+}
+
+func()
+
+console.log(a)
+
+if (!('b' in window)) {
+  var b = 1
+}
+
+console.log(b);
+
+
+
+
+
+
+
+
+// 1. var a = 1;
+// Declares global variable a with value 1.
+
+// 2. func():
+// Inside func, var a is hoisted (local to the function), so it shadows the global a.
+
+// Assignment a = 2 sets the local a to 2.
+
+// Logs 2.
+
+// 3. console.log(a);
+// Logs the global a, which is still 1.
+
+// 4. if (!('b' in window)) { var b = 1 }
+// var b is hoisted to the global scope and becomes a property of window.
+
+// So ('b' in window) is true even before the if runs.
+
+// The condition is false → b = 1 is not executed.
+
+// b remains undefined.
+
+// 5. console.log(b);
+// Logs undefined.
+
+
+
