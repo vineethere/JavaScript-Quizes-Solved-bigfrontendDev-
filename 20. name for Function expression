@@ -1,0 +1,43 @@
+// https://bigfrontend.dev/quiz/name-for-Function-expression
+
+
+function a(){
+}
+const b = function() {
+  
+}
+
+const c = function d() {
+  console.log(typeof d)
+  d = 'e'
+  console.log(typeof d)
+}
+
+console.log(typeof a)
+console.log(typeof b)
+console.log(typeof c)
+console.log(typeof d)
+c()
+
+
+
+// So why doesn’t d = 'e' throw an error?
+// In non-strict mode:
+
+// Named function expressions like function d() {} create an internal, immutable binding for the name d within the function body.
+
+// However, in non-strict mode, JavaScript allows you to assign to that name, but the assignment silently fails — it does not change the binding, nor throw an error.
+
+// d = 'e' appears to work, but actually has no effect — d still refers to the original function.
+
+// So typeof d before and after is still 'function'.
+
+
+// Solution:
+// function
+// function
+// function
+// undefined
+// function
+// function
+
