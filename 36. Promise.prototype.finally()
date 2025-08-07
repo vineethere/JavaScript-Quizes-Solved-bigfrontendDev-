@@ -1,0 +1,62 @@
+// https://bigfrontend.dev/quiz/Promise-prototype-finally
+Promise.resolve(1)
+.finally((data) => {
+  console.log(data)
+  return Promise.reject('error')
+})
+.catch((error) => {
+  console.log(error)
+  throw 'error2'
+})
+.finally((data) => {
+  console.log(data)
+  return Promise.resolve(2).then(console.log)
+})
+.then(console.log)
+.catch(console.log)
+
+
+
+
+
+
+
+
+
+
+
+// 🧵 Step-by-Step Logs:
+// finally → logs undefined (it gets no value), then returns a rejected promise ('error')
+// catch → catches 'error', logs it, then throws 'error2'
+// finally → again logs undefined, calls .then(console.log) on 2, so logs 2
+// Chain is still rejected with 'error2', so:
+// then is skipped
+// catch logs 'error2'
+
+
+// this is returning 1 but why we sbho undefined in finally data?
+
+// ChatGPT said:
+// Great question! Let’s clear up why console.log(data) in .finally((data) => { ... }) logs undefined, even though Promise.resolve(1) returns a resolved value of 1.
+
+// 🔍 The Key Point:
+// js
+// Copy
+// Edit
+// Promise.resolve(1)
+//   .finally((data) => {
+//     console.log(data); // Why is this undefined?
+//   });
+// ✅ Explanation:
+// .finally() does not receive the resolved value or the error as an argument.
+
+// It doesn't take any parameters — its callback is always called with no arguments, regardless of the promise's result.
+
+// So even if Promise.resolve(1) resolves with 1, .finally() is not given that value.
+
+
+// undefined
+// error
+// undefined
+// 2
+// error2
