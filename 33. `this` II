@@ -1,0 +1,52 @@
+// https://bigfrontend.dev/quiz/this-II
+
+const obj = {
+  a: 1,
+  b() {
+    return this.a
+  }
+}
+console.log(obj.b())
+console.log((true ? obj.b : a)())
+console.log((true, obj.b)())
+console.log((3, obj['b'])())
+console.log((obj.b)())
+console.log((obj.c = obj.b)())
+
+
+
+
+
+
+
+// ✅ What You Need to Know:
+// 1. this in JavaScript depends on how a function is called, not where it came from.
+// 2. Method calls (obj.b()) correctly bind this to obj.
+// 3. Plain function calls (e.g., after assignment, comma, ternary) lose that bindin:
+// const fn = obj.b;
+// fn(); // this is undefined
+// 4. Comma operator (a, b) evaluates both but returns the last value, b.
+
+// (true, obj.b)() // same as: const fn = obj.b; fn()
+// 🔸 Result: this is undefined → this.a is undefined.
+
+// 🧾 Your Logs:
+
+// console.log(obj.b())                  // 1     ✅ method call
+// console.log((true ? obj.b : a)())     // undefined ❌ function call
+// console.log((true, obj.b)())          // undefined ❌ comma operator
+// console.log((3, obj['b'])())          // undefined ❌ same
+// console.log((obj.b)())                // 1     ✅ still a method call
+// console.log((obj.c = obj.b)())        // undefined ❌ assignment loses context
+// 🧠 Rule of Thumb:
+// If a function is not called directly as obj.method(), then this is not bound to obj.
+
+// Let me know if you want a one-pager or code comment version of this!
+
+// 1
+// undefined
+// undefined
+// undefined
+// 1
+// undefined
+
