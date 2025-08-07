@@ -1,0 +1,50 @@
+https://bigfrontend.dev/quiz/Hoisting-IV
+let foo = 10
+function func1() {
+    console.log(foo)
+    var foo = 1
+}
+func1 ()
+
+
+function func2() {
+    console.log(foo)
+    let foo = 1
+}
+func2 ()
+
+
+
+// 📝 JavaScript Hoisting & TDZ Summary
+// var (Function func1)
+
+// function func1() {
+//     console.log(foo);
+//     var foo = 1;
+// }
+// func1(); // ➡️ undefined
+// var is hoisted to the top of the function and initialized with undefined.
+
+// So console.log(foo) prints undefined.
+
+// let (Function func2)
+
+// function func2() {
+//     console.log(foo);
+//     let foo = 1;
+// }
+// func2(); // ❌ ReferenceError
+// let is hoisted but not initialized—it’s in the Temporal Dead Zone (TDZ).
+
+// Accessing it before declaration throws a ReferenceError.
+
+
+
+// SO output is:
+// undefined
+// ERROR!
+// /tmp/5C5Sv8SO53/main.js:10
+//     console.log(foo)
+//                 ^
+
+// ReferenceError: Cannot access 'foo' before initialization
