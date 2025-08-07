@@ -1,0 +1,30 @@
+// https://bigfrontend.dev/quiz/true-or-false
+
+console.log([] == 0)
+console.log([] == false)
+console.log(!![])
+console.log([1] == 1)
+console.log(!![1])
+console.log(Boolean([]))
+console.log(Boolean(new Boolean([])))
+console.log(Boolean(new Boolean(false)))
+
+
+
+
+
+
+
+// In JavaScript, values are either truthy or falsy when evaluated in a Boolean context (like inside an if statement or with !!).
+// JavaScript considers objects (and arrays are objects) to always be truthy, regardless of their contents. An empty array still exists in memory as a reference—it’s not "nothing" (null or undefined) or zero-like (0, ""), so it's treated as true.
+
+
+// SOLUTION
+// true
+// true
+// true
+// true
+// true
+// true
+// true
+// true
