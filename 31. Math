@@ -1,0 +1,31 @@
+// https://bigfrontend.dev/quiz/Math
+
+console.log(1 / 0)
+console.log(0 / 0)
+console.log(-1 / 0)
+console.log(1 / 0 * 0)
+console.log(1 / 0 * 1)
+console.log(1 / 0 * -1)
+console.log(1 / 0 * 1 + 1 / 0 * 1)
+console.log(1 / 0 * 1 - 1 / 0 * 1)
+console.log(1 / 0 * 1 * (1 / 0 * 1))
+console.log(1 / 0 * 1 / (1 / 0 * 1))
+console.log(0 / Infinity)
+console.log(0 * Infinity)
+
+
+
+// In JavaScript (and most floating-point arithmetic), Infinity - Infinity is not a number because it's mathematically undefined.
+// 0/INNFINITY=NaN
+// Infinity
+// NaN
+// -Infinity
+// NaN
+// Infinity
+// -Infinity
+// Infinity
+// NaN
+// Infinity
+// NaN
+// 0
+// NaN
