@@ -1,0 +1,52 @@
+//https://bigfrontend.dev/quiz/min-max
+
+console.log(Math.min())
+console.log(Math.max())
+console.log(Math.min(1))
+console.log(Math.max(1,2))
+console.log(Math.min([1,2,3]))
+Infinity
+-Infinity
+1
+2
+NaN
+
+
+
+
+// . console.log(Math.min())
+// What it does: Math.min() with no arguments.
+// Output: Infinity
+// Why: It returns the smallest of the given numbers. With no arguments, it returns positive infinity because there's no value to compare, and Infinity is the identity element for min.
+// 2. console.log(Math.max())
+// What it does: Math.max() with no arguments.
+// Output: -Infinity
+// Why: Similar to Math.min(), but returns the largest value. With no arguments, it returns negative infinity (identity element for max).
+// 3. console.log(Math.min(1))
+// What it does: Math.min() with a single argument: 1.
+// Output: 1
+// Why: It just returns the only argument.
+// 4. console.log(Math.max(1, 2))
+// What it does: Math.max() with two arguments.
+// Output: 2
+// Why: It returns the largest of the two numbers.
+// 5. console.log(Math.min([1, 2, 3]))
+// What it does: Math.min() with an array passed as a single argument.
+// Output: NaN
+// Why: Math.min() expects individual number arguments, not an array. When you pass [1, 2, 3], it’s treated as a single value, and JS tries to convert it to a number:
+// Number([1, 2, 3]) → "1,2,3" → NaN
+// Hence, result is NaN
+// ✅ Summary
+// Math.min() returns Infinity when called with no arguments.
+// This is not because Infinity is the smallest number, but because it’s the identity value for the operation: any number compared with Infinity using Math.min will replace it.
+
+
+
+
+
+// Solution
+// Infinity
+// -Infinity
+// 1
+// 2
+// NaN
