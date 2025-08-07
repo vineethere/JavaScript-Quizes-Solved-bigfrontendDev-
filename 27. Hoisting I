@@ -1,0 +1,26 @@
+// https://bigfrontend.dev/quiz/Hoisting-I
+
+
+const a = 1
+console.log(a)
+
+var b
+console.log(b)
+b = 2
+
+console.log(c)
+var c = 3
+
+console.log(d)
+let d = 2
+
+
+
+//solution
+1
+undefined
+undefined
+ERROR!
+/tmp/ziW36z8Lqj/main.js:11
+console.log(d)
+            ^
