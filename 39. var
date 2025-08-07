@@ -1,0 +1,25 @@
+// https://bigfrontend.dev/quiz/var
+
+function foo() {
+  console.log(i)
+  for (var i = 0; i < 3; i++) {
+    console.log(i)
+  }
+}
+
+foo()
+
+
+
+
+
+
+
+
+
+
+//Ouptu:
+undefined
+0
+1
+2
