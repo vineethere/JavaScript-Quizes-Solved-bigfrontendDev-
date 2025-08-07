@@ -1,0 +1,65 @@
+//https://bigfrontend.dev/quiz/Equality-Sameness
+
+console.log(0 == '0')
+console.log(0 === '0')
+console.log(Object.is(0, '0'))
+
+console.log(0 == 0)
+console.log(0 === 0)
+console.log(Object.is(0, 0))
+
+console.log(0 == -0)
+console.log(0 === -0)
+console.log(Object.is(0, -0))
+
+console.log(NaN == NaN)
+console.log(NaN === NaN)
+console.log(Object.is(NaN, NaN))
+
+console.log(0 == false)
+console.log(0 === false)
+console.log(Object.is(0, false))
+
+
+
+
+
+
+
+
+
+
+// 🔹 NaN == NaN → false
+// This uses the loose equality operator (==), which performs type coercion before comparison.
+// However, NaN is never equal to anything, including itself, even with ==.
+// 🔍 Reason: According to the IEEE 754 floating-point standard (used by JavaScript), NaN (Not-a-Number) is not equal to anything, even another NaN.
+// 🔹 NaN === NaN → false
+// This uses the strict equality operator (===), which does not perform type coercion.
+// Still, it returns false because, again, NaN is not equal to itself. So both loose (==) and strict (===) comparisons fail when comparing NaN to NaN.
+// 🔹 Object.is(NaN, NaN) → true
+// Object.is is a method introduced in ES6 to accurately determine sameness. It's similar to ===, but with two differences:
+// Object.is(NaN, NaN) returns true ✅ (unlike ===, which returns false)
+// Object.is(+0, -0) returns false ❌ (whereas +0 === -0 is true)
+// So in this case:
+// ✅ Object.is(NaN, NaN) correctly identifies that both operands are the same kind of NaN.
+
+
+
+
+//solution
+
+// true
+// false
+// false
+// true
+// true
+// true
+// true
+// true
+// false
+// false
+// false
+// true
+// true
+// false
+// false
