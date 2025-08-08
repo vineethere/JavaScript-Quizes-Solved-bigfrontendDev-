@@ -1,0 +1,209 @@
+// https://bigfrontend.dev/quiz/hoisting-v
+
+(() => {
+  if (!fn) {
+    function fn() {
+      console.log('2')
+    }
+  }
+  fn()
+})()
+
+function fn() {
+  console.log('1')
+}
+
+// another one
+function fn1() {
+  console.log('3')
+}
+
+(() => {
+  if (!fn1) {
+    function fn1() {
+      console.log('4')
+    }
+  }
+  fn1()
+})()
+
+
+// another one !
+(() => {
+  if (false) {
+    function fn3() {
+      console.log('5')
+    }
+  }
+  fn3()
+})()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+📘 JavaScript Function Hoisting & Scoping – Quick Notes
+🔑 Core Concepts
+Function Declarations Are Hoisted
+
+JavaScript "lifts" function declarations to the top of their scope (global or function).
+
+So you can call them before they appear in the code.
+
+Function Declarations Inside if or Other Blocks
+
+In ES6+, functions inside blocks are block-scoped (like let or const).
+
+The function is hoisted only within the block, not outside.
+
+Function Hoisting vs Execution
+
+Hoisting happens before any code runs.
+
+Code inside if (false) won’t execute, but hoisting still applies (within the block).
+
+✅ Example 1
+js
+Copy
+Edit
+(() => {
+  if (!fn) {
+    function fn() {
+      console.log('2')
+    }
+  }
+  fn()
+})()
+
+function fn() {
+  console.log('1')
+}
+What Happens:
+fn already exists globally (logs '1').
+
+if (!fn) is false → block is skipped.
+
+So fn() calls the global version.
+
+✅ Output: 1
+
+✅ Example 2
+js
+Copy
+Edit
+function fn1() {
+  console.log('3')
+}
+
+(() => {
+  if (!fn1) {
+    function fn1() {
+      console.log('4')
+    }
+  }
+  fn1()
+})()
+What Happens:
+Global fn1() exists.
+
+if (!fn1) is false → block skipped.
+
+fn1() calls global version.
+
+✅ Output: 3
+
+❌ Example 3 (Error)
+js
+Copy
+Edit
+(() => {
+  if (false) {
+    function fn3() {
+      console.log('5')
+    }
+  }
+  fn3()
+})()
+What Happens:
+fn3() is defined inside a block (if (false)).
+
+That block never runs → function is not created.
+
+fn3() does not exist outside the block.
+
+❌ Error: ReferenceError: fn3 is not defined
+
+💡 Summary Table
+Scenario	Result	Why?
+Function already exists globally	✅ Works	Global version is used.
+Function declared in if (false)	❌ Error	Not hoisted outside the block — never created.
+Function in block, block runs	✅ Might work	If block runs, function is created in block scope.
+Function in block, block skipped	❌ Not created	Block skipped, so function never declared.
+
+🧠 Key Takeaways
+Functions inside if blocks are block-scoped in ES6+.
+
+Hoisting applies, but only within the block.
+
+Never rely on functions declared inside if statements unless you're 100% sure the block runs.
+
+If you need safe behavior across all environments: Use function expressions or declare functions outside blocks.
+
+
+
+
+
+
+SO OUTPUT:
+
+2
+4
+ERROR!
+/tmp/v58a8xHDNf/main.js:32
+(() => {
+^
+
+TypeError: (intermediate value)(intermediate value)(...) is not a function
+    at Object.<anonymous> (/tmp/v58a8xHDNf/main.js:32:1)
