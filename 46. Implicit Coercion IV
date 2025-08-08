@@ -1,0 +1,17 @@
+// https://bigfrontend.dev/quiz/implicit-coersion-2
+
+
+
+const foo = [0]
+if (foo) {
+  console.log(foo == true)
+} else {
+  console.log(foo == false)
+}
+
+
+
+
+
+// In JavaScript, all objects, including arrays, are truthy even if they contain falsy values like 0.
+// false
