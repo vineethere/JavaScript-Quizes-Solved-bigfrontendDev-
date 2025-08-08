@@ -1,0 +1,20 @@
+// https://bigfrontend.dev/quiz/json-stringify
+
+console.log(JSON.stringify(['false', false]))
+console.log(JSON.stringify([NaN, null, Infinity, undefined]))
+console.log(JSON.stringify({a: null, b: NaN, c: undefined}))
+
+
+
+// SOlution:
+// ['false',false]
+// [null,null,null,null]
+// {"a":null,"b":null}
+// Explanation:
+// Object properties with undefined values are omitted entirely from the result.
+// null is valid and retained.
+// NaN is not valid in JSON, but when used as a property value, it gets converted to null.
+// So:
+// a: null → included
+// b: NaN → becomes b: null
+// c: undefined → omitted
