@@ -1,0 +1,36 @@
+// https://bigfrontend.dev/quiz/Hoisting-VI
+
+var foo = 1;
+(function () {
+  console.log(foo);
+  foo = 2;
+  console.log(window.foo);
+  console.log(foo);
+  var foo = 3;
+  console.log(foo);
+  console.log(window.foo)
+})()
+
+
+
+
+
+
+
+
+
+// Here’s how JavaScript sees it:
+
+// (function () {
+//   var foo;            // hoisted to top (undefined)
+//   console.log(foo);   // undefined
+//   foo = 2;
+//   console.log(foo);   // 2
+//   foo = 3;
+//   console.log(foo);   // 3
+// })();
+
+// 1
+// 2
+// 3
+// 1
