@@ -1,0 +1,36 @@
+// https://bigfrontend.dev/quiz/prototype
+function Foo() { }
+Foo.prototype.bar = 1;
+const a = new Foo();
+console.log(a.bar);
+
+
+
+Foo.prototype.bar = 2;
+const b = new Foo();
+console.log(a.bar);
+console.log(b.bar);
+
+
+
+Foo.prototype = {bar: 3};
+const c = new Foo();
+console.log(a.bar);
+console.log(b.bar);
+console.log(c.bar);
+
+
+
+//1
+
+//2
+//2
+//2
+//2
+//3
+//  Why?
+// When you assign Foo.prototype = { bar: 3 }, you replace the old prototype object with a new object.
+
+// Important: Existing instances (a and b) still reference the old prototype, which had bar = 2.
+
+// Only new instances created after the reassignment (like c) use the new prototype ({ bar: 3 }).
