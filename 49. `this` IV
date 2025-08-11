@@ -1,0 +1,86 @@
+// https://bigfrontend.dev/quiz/this-4
+
+var bar = 1;
+
+function foo() {
+  return this.bar++;
+}
+
+const a = {
+  bar: 10,
+  foo1: foo,
+  foo2: function() {
+    return foo();
+  },
+};
+
+console.log(a.foo1.call());   
+console.log(a.foo1());        
+console.log(a.foo2.call());  
+console.log(a.foo2());      
+ 
+
+// 📌 What is this?
+// this refers to who is calling the function.
+
+// If you call a function normally (not through an object), this refers to the global object.
+
+// If you call a function using an object (like a.foo1()), then this refers to that object.
+
+// 📌 Understanding the variables:
+// There’s a global bar with value 1.
+
+// The object a has its own bar with value 10.
+
+// 📌 How the function foo() works: 
+// function foo() {
+//   return this.bar++;
+// }
+// It returns the current value of bar from whatever this is.
+
+// Then it increases that value by 1 (because of bar++).
+
+// 🔍 What each line does:
+// 1. a.foo1.call()
+// call() without a parameter sets this to the global object.
+
+// Global bar is 1 → it returns 1, then global bar becomes 2.
+
+// 2. a.foo1()
+// Called using object a, so this is a.
+
+// a.bar is 10 → it returns 10, then a.bar becomes 11.
+
+// 3. a.foo2.call()
+// foo2 is called as part of a, but it calls foo() without an object.
+
+// So this in foo() is global again.
+
+// Global bar is 2 → it returns 2, then global bar becomes 3.
+
+// 4. a.foo2()
+// Again calls foo() without an object inside foo2, so this is still global.
+
+// Global bar is 3 → it returns 3, then global bar becomes 4.
+
+// ✅ Final Output: 
+// 1
+// 10
+// 2
+// 3
+// 🧠 Key Takeaways:
+// If a function is called with an object like obj.func(), then this is obj.
+
+// If a function is called alone (or with .call() without an object), this is the global object.
+
+// When this.bar++ runs:
+
+// It returns the current value of bar.
+
+// Then increases the value by 1.
+
+// SOLUTION:
+// 1
+// 10
+// 2
+// 3
