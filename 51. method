@@ -1,0 +1,142 @@
+// https://bigfrontend.dev/quiz/method
+
+// This is a trick question
+
+// case 1
+const obj1 = {
+  foo() {
+    console.log(super.foo());
+  }
+};
+
+Object.setPrototypeOf(obj1, {
+  foo() {
+    return 'bar';
+  }
+});
+
+obj1.foo();
+
+// case 2
+
+const obj2 = {
+  foo: function() {
+    console.log(super.foo());
+  }
+};
+
+Object.setPrototypeOf(obj2, {
+  foo() {
+    return 'bar';
+  }
+});
+
+obj2.foo();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 📝 JavaScript super Keyword — Beginner Notes
+// 🔹 What is super?
+// super is used inside a method to call a method from the object's parent (prototype).
+
+// Think of it as:
+
+// “Call the same method from my parent.”
+
+// 🔹 When does super work?
+// It only works inside methods — not regular functions.
+
+// JavaScript must know the method belongs to an object, which only happens if the method is written using method shorthand.
+
+// ✅ Works:
+// const obj = {
+//   foo() {
+//     return super.foo();
+//   }
+// };
+// ❌ Doesn’t work:
+// js
+// Copy code
+// const obj = {
+//   foo: function() {
+//     return super.foo(); // Error
+//   }
+// };
+// 🔹 What does Object.setPrototypeOf() do?
+// This sets the parent (also called prototype) of an object.
+
+// Example:
+
+// Object.setPrototypeOf(obj, {
+//   foo() {
+//     return 'bar';
+//   }
+// });
+// Now obj can call super.foo(), and it will run the foo() method from this parent.
+
+// 🔹 Case 1 (Works)
+
+// const obj1 = {
+//   foo() {
+//     console.log(super.foo());
+//   }
+// };
+
+// Object.setPrototypeOf(obj1, {
+//   foo() {
+//     return 'bar';
+//   }
+// });
+
+// obj1.foo();  // Output: bar
+// foo() is defined using method shorthand.
+
+// super.foo() successfully calls the foo() method from the parent.
+
+// ✅ Works perfectly.
+
+// 🔹 Case 2 (Fails)
+
+// const obj2 = {
+//   foo: function() {
+//     console.log(super.foo());
+//   }
+// };
+
+// Object.setPrototypeOf(obj2, {
+//   foo() {
+//     return 'bar';
+//   }
+// });
+
+// obj2.foo();  // ❌ Error
+// foo is a regular function expression, not a method.
+
+// super doesn’t work here.
+
+// Results in a ReferenceError at runtime.
+
+// ❌ Fails.
+
+// 🔹 Key Takeaways
+// Use foo() {} method shorthand if you want to use super inside.
+
+// super can only refer to the parent if the function is a proper method.
+
+// Setting a parent with Object.setPrototypeOf() allows access to that parent’s methods using super, but only in the correct syntax.
+
