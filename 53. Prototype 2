@@ -1,0 +1,13 @@
+// https://bigfrontend.dev/quiz/prototype2
+
+function F() {
+  this.foo = 'bar'
+}
+
+const f = new F()
+console.log(f.prototype)
+
+
+OUTPUT:
+// undefined
+// F is defined instead of f
