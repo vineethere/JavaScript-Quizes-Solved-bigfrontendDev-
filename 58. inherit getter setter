@@ -1,0 +1,60 @@
+
+// https://bigfrontend.dev/quiz/inherit-getter-setter
+
+
+// let val = 0
+
+// class A {
+//   set foo(_val) { val = _val }
+//   get foo() { return val }
+// }
+
+// class B extends A { }
+
+// class C extends A {
+//   get foo() { return val }
+// }
+// Key Concepts:
+// JavaScript getter/setter pairs must be defined together if you want both to work. If a class overrides just the getter or just the setter, it replaces the whole property and the other part is lost.
+
+// When a class like C overrides only the getter, the inherited setter from A is not accessible anymore.
+
+// Assigning to a property with only a getter (and no setter) results in no effect. In strict mode, this may even throw an error. In normal mode, it silently fails.
+
+// If a getter exists but no setter, doing obj.prop = value does not call any function and does not create an own property either – the assignment is ignored.
+
+// All foo accesses in the classes deal with a shared external variable val. Changing val via a setter affects all classes that rely on the getter.
+
+// Line-by-line Behavior:
+// b = new B() creates an instance of B, which inherits both getter and setter from A.
+
+// console.log(b.foo) returns 0 (initial value of val).
+
+// b.foo = 1 updates val to 1 via setter from A.
+
+// console.log(b.foo) returns 1.
+
+// c = new C() creates an instance of C with its own getter but no setter.
+
+// console.log(c.foo) returns 1 (current val).
+
+// c.foo = 2 is ignored because C has no setter, and the inherited setter was shadowed by the new getter.
+
+// console.log(c.foo) returns 1 (value of val unchanged).
+
+// console.log(b.foo) returns 1 (still the current val).
+
+// Final Output:
+
+// 0
+// 1
+// 1
+// 1
+// 1
+
+// Solution:
+// 0
+// 1
+// 1
+// 1
+// 1
