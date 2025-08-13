@@ -1,0 +1,91 @@
+//https://bigfrontend.dev/quiz/inherit-writable-flag
+const a = {}
+Object.defineProperty(a, 'foo1', {
+  value: 1
+})
+const b = Object.create(a)
+b.foo2 = 1
+
+console.log(b.foo1)
+console.log(b.foo2)
+
+b.foo1 = 2
+b.foo2 = 2
+
+
+console.log(b.foo1)
+console.log(b.foo2)
+
+
+
+// 1
+// 2
+
+//1
+//2
+// JavaScript Prototype Inheritance & Property Descriptors – Key Points
+// Object Definition with Object.defineProperty:
+
+// Using Object.defineProperty(obj, prop, { value: x }) defines a property that is:
+
+// Non-writable
+
+// Non-enumerable
+
+// Non-configurable
+
+// These defaults make the property effectively read-only.
+
+// Prototype Chain Access:
+
+// When accessing a property, JavaScript first looks on the object itself.
+
+// If not found, it traverses up the prototype chain.
+
+// Example: b.foo1 looks in b, doesn’t find it, so it checks a, where it exists.
+
+// Object Creation with Prototype:
+
+// const b = Object.create(a) creates object b that inherits from a.
+
+// Direct vs Inherited Properties:
+
+// Properties directly set on b (e.g. b.foo2 = 1) are own properties.
+
+// Properties like foo1 inherited from a are not own properties.
+
+// Attempting to Override Inherited Read-Only Properties:
+
+// b.foo1 = 2 doesn't override or shadow a.foo1 because:
+
+// foo1 is non-writable.
+
+// It's inherited from prototype.
+
+// In non-strict mode, the assignment fails silently.
+
+// In strict mode, it throws a TypeError.
+
+// Output Breakdown:
+
+// console.log(b.foo1) → 1 (inherited from a)
+
+// console.log(b.foo2) → 1 (own property)
+
+// After b.foo1 = 2; b.foo2 = 2;
+
+// b.foo1 remains 1 (can't override inherited read-only)
+
+// b.foo2 becomes 2 (own writable property)
+
+// Final Output of the Code:
+
+// 1
+// 1
+// 1
+// 2
+// Strict Mode Behavior:
+
+// If 'use strict'; is enabled, b.foo1 = 2 throws a TypeError.
+
+// These notes should help you quickly recall the key JavaScript concepts around inheritance and property descriptors. Let me know if you want them exported or saved in a specific format.
