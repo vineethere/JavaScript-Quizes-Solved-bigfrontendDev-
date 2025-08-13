@@ -1,0 +1,198 @@
+// https://bigfrontend.dev/quiz/primitive
+
+// case 1
+const obj1 = {
+  valueOf() {
+    return 1
+  },
+  toString() {
+    return '100'
+  }
+}
+
+console.log(obj1 + 1)
+console.log(parseInt(obj1))
+
+// case 2
+const obj2 = {
+  [Symbol.toPrimitive]() {
+    return 200
+  },
+
+  valueOf() {
+    return 1
+  },
+  toString() {
+    return '100'
+  }
+}
+
+console.log(obj2 + 1)
+console.log(parseInt(obj2))
+
+// case 3
+const obj3 = {
+  toString() {
+    return '100'
+  }
+}
+
+console.log(+obj3)
+console.log(obj3 + 1)
+console.log(parseInt(obj3))
+
+// case 4
+const obj4 = {
+  valueOf() {
+    return 1
+  }
+}
+
+console.log(obj4 + 1)
+console.log(parseInt(obj4))
+
+// case 5
+const obj5 = {
+  [Symbol.toPrimitive](hint) {
+    return hint === 'string' ? '100' : 1
+  },
+}
+
+console.log(obj5 + 1)
+console.log(parseInt(obj5))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 📝 JavaScript Object to Primitive Conversion Notes
+// 🔧 How JS Converts Objects to Primitives
+// When JavaScript needs to convert an object to a primitive (e.g. during addition or parsing), it follows this order:
+
+// Check for a Symbol.toPrimitive(hint) method.
+
+// If not present, check valueOf().
+
+// If that doesn't return a primitive, use toString().
+
+// The "hint" depends on context:
+
+// +, arithmetic → hint is "default" or "number"
+
+// parseInt() → hint is "string"
+
+// String contexts (e.g., template literals) → hint is "string"
+
+// ✅ Behavior by Case
+// 📦 Case 1: valueOf and toString
+// js
+// Copy
+// Edit
+// const obj1 = {
+//   valueOf() { return 1 },
+//   toString() { return '100' }
+// }
+// obj1 + 1 → valueOf returns 1 → 1 + 1 = 2
+
+// parseInt(obj1) → toString returns '100' → parseInt('100') = 100
+
+// Output:
+
+// Copy
+// Edit
+// 2
+// 100
+// 📦 Case 2: Symbol.toPrimitive overrides all
+// js
+// Copy
+// Edit
+// const obj2 = {
+//   [Symbol.toPrimitive]() { return 200 },
+//   valueOf() { return 1 },
+//   toString() { return '100' }
+// }
+// obj2 + 1 → Symbol.toPrimitive returns 200 → 200 + 1 = 201
+
+// parseInt(obj2) → Symbol.toPrimitive returns 200 → parseInt(200) = 200
+
+// Output:
+ 
+// 201
+// 200
+// 📦 Case 3: Only toString
+
+
+// const obj3 = {
+//   toString() { return '100' }
+// }
+// +obj3 → toString returns '100' → +('100') = 100
+
+// obj3 + 1 → '100' + 1 = '1001' (string concatenation)
+
+// parseInt(obj3) → '100' → parseInt('100') = 100
+
+// Output: 
+// 100
+// 1001
+// 100
+// 📦 Case 4: Only valueOf
+
+
+// const obj4 = {
+//   valueOf() { return 1 }
+// }
+// obj4 + 1 → valueOf returns 1 → 1 + 1 = 2
+
+// parseInt(obj4) → valueOf returns 1 → parseInt(1) = 1
+
+// Output:
+// 2
+// 1
+// 📦 Case 5: Symbol.toPrimitive with hint check
+// const obj5 = {
+//   [Symbol.toPrimitive](hint) {
+//     return hint === 'string' ? '100' : 1
+//   }
+// }
+// obj5 + 1 → default hint (number) → returns 1 → 1 + 1 = 2
+
+// parseInt(obj5) → hint is 'string' → returns '100' → parseInt('100') = 100
+
+// Output:
+ 
+// 2
+// 100
+// 💡 Key Takeaways
+// Symbol.toPrimitive has the highest priority for coercion.
+
+// parseInt() converts using string hint — it will call toString() if no Symbol.toPrimitive.
+
+// Addition (+) and unary + may trigger different hints (default or number).
+
+// +obj tries to coerce to number; obj + 1 can coerce to either number or string based on result.
+// SOLUTION
+// 2
+// 100
+// 201
+// 200
+// 100
+// 1001
+// 100
+// 2
+// NaN
+// 2
+// 100
