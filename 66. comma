@@ -1,0 +1,29 @@
+// https://bigfrontend.dev/quiz/comma
+
+var obj = {
+  a: "BFE",
+  b: "dev",
+  func: (function foo(){ return this.a; }, function bar(){ return this.b; })
+}
+
+console.log(obj.func())
+
+
+
+// In the JavaScript code you provided, the object obj has a property func which is assigned two functions: foo and bar. However, the way they are assigned will cause an issue.
+
+// Problem:
+
+// In JavaScript, when you assign multiple functions to a property, the last one will overwrite the previous ones.
+
+// In your case, foo() and bar() are both placed in the func property. However, since only one value can be assigned to obj.func, only the second function (bar) will be stored in obj.func.
+
+// Explanation:
+
+// obj.func will only be the second function (bar) because the first function (foo) is overwritten.
+
+// When you call obj.func(), the function bar() is invoked.
+
+// Inside bar(), the value of this.b is being accessed. However, since this is bound to the global object (or undefined in strict mode) when invoked as a standalone function, the value of this.b will be undefined.
+// Solution
+// dev
