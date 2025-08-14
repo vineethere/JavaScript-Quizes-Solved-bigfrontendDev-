@@ -1,0 +1,30 @@
+// https://bigfrontend.dev/quiz/reference-type
+
+// This is a JavaScript Quiz from BFE.dev
+
+const obj = {
+  msg: 'BFE',
+  foo() {
+    console.log(this.msg)
+  },
+  bar() {
+    console.log('dev')
+  }
+}
+
+obj.foo();
+(obj.foo)();
+(obj.foo || obj.bar)();
+
+
+// The expression obj.foo || obj.bar will first try to invoke obj.foo. If foo is undefined or a falsy value, it would fall back to obj.bar.
+
+// Since foo is a valid function, it will be called here. But again, the this context is not bound to obj.
+
+// This has the same effect as the second invocation, so this will refer to the global object (or undefined in strict mode).
+
+
+// SOlution
+// BFE
+// BFE
+// undefined
