@@ -1,0 +1,14 @@
+//https://bigfrontend.dev/quiz/Function-name
+var foo = function bar(){ 
+  return 'BFE'; 
+};
+
+console.log(foo());
+console.log(bar());
+
+
+
+
+// Solution
+// BFE
+// ERROR!
