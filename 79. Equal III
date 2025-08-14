@@ -1,0 +1,4 @@
+
+//https://bigfrontend.dev/quiz/equal-iii
+console.log(2.0 == "2" == new Boolean(true) == "1")
+//true
