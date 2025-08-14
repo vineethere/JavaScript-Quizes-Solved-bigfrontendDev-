@@ -1,0 +1,17 @@
+// https://bigfrontend.dev/quiz/setTimeout-2
+
+let num;
+
+for (let i = 0; i < 5; i++) {
+  num = i
+  setTimeout(() => {
+    console.log(num)a
+  }, 100)
+}
+
+// Solution
+// 4
+// 4
+// 4
+// 4
+// 4
