@@ -1,0 +1,70 @@
+// https://bigfrontend.dev/quiz/postMessage
+
+console.log(1)
+
+window.onmessage = () => {
+  console.log(2)
+}
+
+Promise.resolve().then(() => {
+  console.log(3)
+})
+
+setTimeout(() => {
+  console.log(4)
+}, 0)
+
+console.log(5)
+
+window.postMessage('')
+
+console.log(6)
+
+
+
+
+
+
+// Let's break down what happens when this JavaScript code runs, and examine the order of the logs. The code will execute as follows:
+
+// Synchronous code execution happens first:
+
+// console.log(1) is executed immediately. Output: 1
+
+// window.onmessage = () => { console.log(2) } sets up an event listener for the postMessage call, but does not trigger it yet.
+
+// Promise.resolve().then(() => { console.log(3) }) schedules the promise resolution, but it won't execute until after the synchronous code.
+
+// setTimeout(() => { console.log(4) }, 0) sets a timeout, but the code inside the setTimeout will be executed later, after all the synchronous code and microtasks (like promises) have completed.
+
+// console.log(5) is executed immediately. Output: 5
+
+// window.postMessage('') triggers the onmessage event handler, which will log 2.
+
+// Microtasks (Promises) will run after the synchronous code:
+
+// The promise .then(() => { console.log(3) }) will execute, so it logs 3.
+
+// Macrotasks (e.g., setTimeout) run last:
+
+// The setTimeout callback will log 4 after the microtasks.
+
+// Final order:
+
+// 1 (from the first console.log(1))
+
+// 5 (from the second console.log(5))
+
+// 3 (from the resolved promise)
+
+// 6 (right after postMessage, synchronous code)
+
+// 2 (from the window.onmessage triggered by postMessage)
+
+// 4 (from the setTimeout callback)
+// 1
+// 5
+// 6
+// 3
+// 4
+// 2
