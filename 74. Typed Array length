@@ -1,0 +1,31 @@
+// https://bigfrontend.dev/quiz/Typed-Array-length
+
+class MyArray extends Uint8Array {
+  get length() {
+    return 3
+  }
+}
+
+const arr1 = new MyArray(10)
+console.log(arr1.length)
+
+const arr2 = new Uint8Array(10)
+console.log(arr2.length)
+
+// Code Explanation:
+
+// Class Definition:
+
+// You're creating a class MyArray that extends Uint8Array.
+
+// In MyArray, you've defined a getter for the length property that always returns 3, no matter what the length of the array is. This is because the getter overrides the inherited length property of Uint8Array.
+
+// Creating Instances:
+
+// arr1 is an instance of MyArray with an initial size of 10. But due to the getter, the length of arr1 will always return 3, regardless of the actual size.
+
+// arr2 is an instance of Uint8Array, which has its own native behavior. The length here will be 10, as specified when it was created.
+
+// Solutiuobn 
+// 3
+// 10
