@@ -1,0 +1,14 @@
+// https://bigfrontend.dev/quiz/undefined
+
+function foo(a, b, undefined, undefined) {
+  console.log('BFE.dev')
+}
+console.log(foo.length)
+
+
+
+
+
+// In JavaScript, the foo.length property refers to the number of expected parameters in the function's definition (not the actual arguments passed when the function is invoked). Even though you have some undefined values in the parameter list, they still count as expected parameters.
+// Solution
+// 4
