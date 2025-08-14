@@ -1,0 +1,35 @@
+
+
+// https://bigfrontend.dev/quiz/const
+
+function func() {
+  const a = b = c = 1
+}
+func()
+console.log(typeof a, typeof b, typeof c)
+
+
+// Inside func():
+
+// const a = 1: This is a block-scoped constant and is only accessible within the function func(). The value of a will not leak outside the function.
+
+// b = 1: Since b is not declared with let, const, or var, it is implicitly assigned to the global scope. This is an important point: because b is assigned globally, it doesn't follow block scoping like a.
+
+// c = 1: Similarly, c is also implicitly assigned to the global scope.
+
+// When func() finishes executing:
+
+// a remains local to the function, and thus it isn't accessible outside func().
+
+// b and c are created as global variables. Since they aren't explicitly declared with a keyword like let or const, they end up as global variables in the global scope.
+
+// console.log(typeof a, typeof b, typeof c);:
+
+// typeof a: Since a is local to func(), it doesn't exist in the global scope, and therefore a is undefined outside the function.
+
+// typeof b: b was implicitly assigned globally, and its value is 1, so typeof b is 'number'.
+
+// typeof c: c was also implicitly assigned globally and has the value 1, so typeof c is 'number'.
+
+// Solution
+// undefined number number
