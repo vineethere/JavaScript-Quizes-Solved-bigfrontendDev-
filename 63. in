@@ -1,0 +1,49 @@
+//https://bigfrontend.dev/quiz/in-coercion
+
+
+const obj = {
+  foo: 'bar'
+}
+
+console.log('foo' in obj)
+console.log(['foo'] in obj)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+true
+true
+Explanation:
+
+console.log('foo' in obj)
+
+The in operator checks if the key 'foo' exists in the object obj.
+
+Since the obj has a property foo, the output will be true.
+
+console.log(['foo'] in obj)
+
+In this case, the expression checks if the key ['foo'] exists in obj.
+
+Arrays are automatically converted to strings in JavaScript, so ['foo'] becomes the string 'foo'. This means it’s checking if 'foo' exists as a property in obj.
+
+Since the property foo is present in the object, the output will be true as well.
+
