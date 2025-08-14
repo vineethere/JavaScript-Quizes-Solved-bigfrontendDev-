@@ -1,0 +1,79 @@
+
+// https://bigfrontend.dev/quiz/window-name
+
+var a = 1;
+(function() {
+  console.log(a + this.a);
+  var a = '2'
+  console.log(a + this.a);
+})();
+
+var name = 1;
+(function() {
+  console.log(name + this.name);
+  var name = '2'
+  console.log(name + this.name);
+})();
+
+
+
+
+
+
+
+
+// 1. JavaScript Hoisting & Scope
+
+// In JavaScript, variable hoisting occurs with var, meaning the declarations are moved to the top of their scope, but the initializations happen at the actual code location.
+
+// This leads to variables being undefined until they're initialized.
+
+// 2. The this Keyword in Non-Strict Mode
+
+// In non-strict mode, this in a function refers to the global object (i.e., window in browsers).
+
+// So, when you reference this.a, it refers to the global a, which is 1 in this case.
+
+// 3. Behavior of undefined + <value>
+
+// When trying to perform arithmetic or addition with undefined (like undefined + 1), JavaScript coerces undefined to NaN (Not-a-Number), which is why you see NaN instead of 'undefined1'.
+
+// 4. Explanation of Code Execution
+// First IIFE (Immediately Invoked Function Expression):
+// var a = 1;
+// (function() {
+//   console.log(a + this.a);
+//   var a = '2';
+//   console.log(a + this.a);
+// })();
+
+
+// First log: undefined + 1 → NaN (due to undefined being coerced to NaN).
+
+// Second log: '2' + 1 → '21' (string concatenation).
+
+// Second IIFE:
+// var name = 1;
+// (function() {
+//   console.log(name + this.name);
+//   var name = '2';
+//   console.log(name + this.name);
+// })();
+
+
+// First log: undefined + 1 → NaN (because name inside the function is hoisted as undefined).
+
+// Second log: '2' + 1 → '21' (string concatenation).
+
+// Final Output
+
+// The final output you'll see in the console is:
+
+// NaN
+// 21
+// NaN
+// 21
+
+// Why NaN instead of 'undefined1':
+
+// When JavaScript tries to evaluate undefined + 1, it doesn't coerce undefined to a string. Instead, it tries to convert undefined to a number, which results in NaN.
