@@ -1,0 +1,12 @@
+// http://bigfrontend.dev/quiz/instanceOf-2
+console.log(Function instanceof Object)
+console.log(Object instanceof Function)
+console.log(Function instanceof Function)
+console.log(Object instanceof Object)
+
+
+
+// true
+// false
+// true
+// true
