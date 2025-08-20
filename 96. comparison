@@ -1,0 +1,51 @@
+// https://bigfrontend.dev/quiz/comparison
+console.log(10 > 9)
+console.log(10 > '9')
+console.log('10' > 9)
+console.log('10' > '9')
+
+
+
+
+
+// 1. console.log(10 > 9)
+
+// Types: Number > Number
+
+// Operation: Standard numeric comparison.
+
+// Result: true → because 10 is greater than 9.
+
+// 2. console.log(10 > '9')
+
+// Types: Number > String
+
+// Operation: JavaScript converts the string '9' to a number → 9
+
+// Result: true → becomes 10 > 9
+
+// 3. console.log('10' > 9)
+
+// Types: String > Number
+
+// Operation: JavaScript converts '10' to a number → 10
+
+// Result: true → becomes 10 > 9
+
+// 4. console.log('10' > '9')
+
+// Types: String > String
+
+// Operation: Lexicographic (dictionary) comparison — compares characters from left to right, based on UTF-16 values.
+
+// '1' vs '9' → '1' has lower char code than '9'
+
+// Result: false → '10' is not greater than '9' lexicographically
+
+
+
+// Solution
+// true
+// true
+// true
+// false
