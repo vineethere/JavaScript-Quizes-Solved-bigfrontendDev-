@@ -1,0 +1,49 @@
+// https://bigfrontend.dev/quiz/number-format
+console.log(017 - 011)
+console.log(018 - 011)
+console.log(019 - 011)
+
+
+
+
+
+
+// JavaScript and Octal Literals
+
+// In non-strict mode, JavaScript interprets numbers starting with 0 as octal literals (base 8) if the digits are valid octal digits (0–7). If not, the number is treated as a decimal.
+
+// Line by Line Breakdown
+
+// 017 - 011
+
+// 017 is treated as octal:
+// → 017 (octal) = 15 (decimal)
+
+// 011 is also octal:
+// → 011 (octal) = 9 (decimal)
+
+// Result: 15 - 9 = 6
+
+// 018 - 011
+
+// 018 is not a valid octal (8 is not an octal digit), so it's treated as decimal 18.
+
+// 011 is still octal = 9
+
+// Result: 18 - 9 = 9
+
+// 019 - 011
+
+// 019 is not a valid octal, so it's treated as decimal 19.
+
+// 011 is still octal = 9
+
+// Result: 19 - 9 = 10
+
+
+
+
+//Solution
+// 6
+// 9
+// 10
