@@ -1,0 +1,30 @@
+// https://bigfrontend.dev/quiz/NaN
+
+console.log(NaN == NaN)
+console.log(NaN === NaN)
+console.log(Object.is(NaN, NaN))
+console.log([NaN].indexOf(NaN))
+console.log([NaN].includes(NaN))
+console.log(Math.max(NaN, 1))
+console.log(Math.min(NaN, 1))
+console.log(Math.min(NaN, Infinity))
+
+
+// NaN == NaN and NaN === NaN are both false because NaN is the only JavaScript value that is not equal to itself.
+
+// Object.is(NaN, NaN) is true because Object.is is a special equality method that correctly identifies NaN as equal to NaN.
+
+// [NaN].indexOf(NaN) returns -1 because indexOf uses strict equality (===), and since NaN === NaN is false, it doesn't find it.
+
+// [NaN].includes(NaN) returns true because includes correctly treats NaN as equal to NaN.
+
+// Math.max or Math.min with NaN and any number always returns NaN because NaN represents an invalid number.
+//Soultion
+// console.log(NaN == NaN)         // false
+// console.log(NaN === NaN)        // false
+// console.log(Object.is(NaN, NaN))// true
+// console.log([NaN].indexOf(NaN)) // -1
+// console.log([NaN].includes(NaN))// true
+// console.log(Math.max(NaN, 1))   // NaN
+// console.log(Math.min(NaN, 1))   // NaN
+// console.log(Math.min(NaN, Infinity)) // NaN
