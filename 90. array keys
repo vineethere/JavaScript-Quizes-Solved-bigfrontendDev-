@@ -1,0 +1,64 @@
+//https://bigfrontend.dev/quiz/array-keys
+
+console.log(Reflect.ownKeys([]))
+console.log(Reflect.ownKeys([,]))
+console.log(Reflect.ownKeys([1,,2]))
+console.log(Reflect.ownKeys([...[1,,2]]))
+
+// Reflect.ownKeys() with Arrays and Holes — Summary Notes
+
+// Reflect.ownKeys(obj) returns all own property keys of the object, including string keys, symbol keys, and non-enumerable properties.
+
+// For arrays, this always includes the built-in "length" property because it is an own, non-enumerable property.
+
+// Array indices appear as keys only if the element exists at that index.
+// Holes (empty slots) do not create properties and so are not included.
+
+// Examples:
+
+// Reflect.ownKeys([])
+
+// Empty array has no indexed elements.
+
+// Own keys are: ["length"].
+
+// Reflect.ownKeys([,])
+
+// Array with one hole at index 0.
+
+// No index property for the hole, only "length".
+
+// Own keys: ["length"].
+
+// Reflect.ownKeys([1,,2])
+
+// Elements exist at index 0 and 2, hole at 1.
+
+// Own keys: ["0", "2", "length"].
+
+// Reflect.ownKeys([...[1,,2]])
+
+// Spread operator converts hole into explicit undefined.
+
+// Elements at indices 0, 1, and 2 all exist.
+
+// Own keys: ["0", "1", "2", "length"].
+
+// Key points:
+
+// "length" is always included as an own property of arrays in Reflect.ownKeys().
+
+// Holes in arrays do not create own properties, so their indices are skipped.
+
+// Spreading an array with holes fills those holes with undefined, creating own properties at those indices.
+
+// To exclude "length" from results for clarity, you can filter it out:
+
+// Reflect.ownKeys(arr).filter(key => key !== "length")
+
+
+//Solution
+// [ 'length' ]
+// [ 'length' ]
+// [ '0', '2', 'length' ]
+// [ '0', '1', '2', 'length' ]
