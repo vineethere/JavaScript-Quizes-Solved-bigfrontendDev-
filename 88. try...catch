@@ -1,0 +1,88 @@
+// https://bigfrontend.dev/quiz/try-catch
+
+var a = 'a'
+try {
+  throw new Error('BFE.dev')
+} catch {
+  var a = 'a1'
+}
+console.log(a)
+
+var b = 'b'
+try {
+  throw new Error('BFE.dev')
+} catch (b) {
+  var b = 'b1'
+}
+console.log(b)
+
+var c = 'c'
+try {
+  throw new Error('BFE.dev')
+} catch (error) {
+  var c = 'c1'
+}
+console.log(c)
+
+
+// Absolutely! Here's a clear, concise set of notes summarizing everything we've covered in this conversation for your future reference. This includes the explanation of try...catch, var, and how catch parameters interact with variable scoping in JavaScript.
+
+// 📝 JavaScript try...catch and var Scope – Key Notes
+// 🔹 General Behavior of var:
+
+// var is function-scoped (or global if not in a function).
+
+// var ignores block boundaries like {}, if, try, and catch.
+
+// Redeclaring a variable with var in the same scope does not throw an error.
+
+// Multiple var declarations of the same name are silently ignored (only the latest assignment matters).
+
+// 🔹 catch Clause Behavior:
+
+// catch (e) introduces a block-scoped variable named e.
+
+// This catch parameter shadows any outer variable of the same name within the catch block only.
+
+// If no catch parameter is declared (catch {}), no new variable is created.
+
+// 🔹 Key Insight on var Inside catch:
+
+// If the var name inside the catch block is the same as the catch parameter, then:
+
+// The assignment (b = ...) affects the block-scoped catch parameter, not the outer variable.
+
+// The declaration (var b) is hoisted to the outer (function/global) scope, but doesn’t override the catch parameter inside the block.
+
+// If the var name is different from the catch parameter, then:
+
+// The var declaration and assignment affect the outer variable, as usual.
+
+// Explanation:
+
+// For a: No catch parameter → var a = 'a1' updates outer a.
+
+// For b: catch (b) declares a new block-scoped b → var b = 'b1' assigns to catch parameter, not outer b.
+
+// For c: Catch parameter is error, which doesn't shadow c → var c = 'c1' updates outer c.
+
+// 🔹 Why No Redeclaration Error?
+
+// The catch (b) parameter is block-scoped.
+
+// The var b declaration is hoisted to the function/global scope.
+
+// Because they live in different scopes, there's no redeclaration error.
+
+// But inside the catch block, the catch parameter shadows the var binding.
+
+// 🔹 What Happens to Outer Variables?
+
+// In the b case, even though var b exists outside the catch block, the b = 'b1' assignment affects the catch parameter, not the outer b.
+
+// The outer b remains 'b'.
+
+// Solution
+// a1
+// b
+// c1
