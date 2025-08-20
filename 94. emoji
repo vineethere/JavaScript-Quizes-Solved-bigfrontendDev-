@@ -1,0 +1,10 @@
+// https://bigfrontend.dev/quiz/emoji
+
+console.log('👍'.length)
+
+
+// Explanation:
+
+// Even though '👍' looks like a single character (emoji), in JavaScript, strings are sequences of UTF-16 code units. The '👍' emoji is a Unicode character outside the Basic Multilingual Plane (BMP), so it's represented using a surrogate pair — two 16-bit code units.
+// Solution
+// 2
