@@ -1,0 +1,17 @@
+// https://bigfrontend.dev/quiz/string
+
+let a = 'bfe.dev'
+a[0] = 'c'
+console.log(a)
+
+
+// Strings in JavaScript are immutable, meaning you cannot change individual characters in a string using index assignment (like a[0] = 'c'). When you do this:
+
+// a[0] = 'c'
+
+
+// JavaScript silently ignores the operation — it doesn't throw an error, but it also doesn't change the string.
+
+// If you want to change the first character, you need to create a new string, for example:
+//Solution
+// bfe.dev
