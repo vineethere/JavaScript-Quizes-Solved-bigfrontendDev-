@@ -1,0 +1,32 @@
+// https://bigfrontend.dev/quiz/largest-Array-index
+
+const arr = []
+arr[(2 ** 32) - 2] = 1
+arr[(2 ** 32) - 1] = 2
+console.log(arr.at(-1))
+
+
+// JavaScript arrays have a maximum length of 2^32 - 1 (which is 4294967295). This is because array length is stored as a 32-bit unsigned integer internally.
+
+// You assigned arr[4294967294] = 1, which is valid.
+
+// You assigned arr[4294967295] = 2, which is actually one beyond the max length, so this is invalid as an array index.
+
+// But wait — in JavaScript:
+
+// Array indices must be between 0 and 2^32 - 2 (inclusive).
+
+// 4294967295 is not a valid array index; it's treated like a property key (a normal object key) and does not increase the array length.
+
+// What happens here:
+
+// The length of the array after assigning arr[4294967294] = 1 is 4294967295 (one more than the largest index).
+
+// Assigning arr[4294967295] = 2 does not increase the length because the index is invalid for arrays, so it becomes just a property.
+
+// When you do arr.at(-1), it tries to access the last element based on arr.length - 1.
+
+// arr.length is 4294967295, so arr.at(-1) means arr[4294967294], which is 1.
+
+// Output:
+// 1
