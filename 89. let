@@ -1,0 +1,34 @@
+// https://bigfrontend.dev/quiz/let
+
+let a = 1;
+(function() {
+  let foo = () => a
+  let a = 2;
+  console.log(foo())
+}())
+
+
+// What happens here step-by-step?
+
+// Outside the IIFE:
+// let a = 1; declares a variable a in the outer scope and initializes it to 1.
+
+// Inside the IIFE:
+// The IIFE starts execution. Inside it:
+
+// let foo = () => a; declares a function foo that returns the variable a.
+
+// But right after that, there is a declaration: let a = 2;
+
+// Temporal Dead Zone (TDZ):
+// Because of let a = 2; inside the IIFE, there is a new block-scoped a variable that shadows the outer a. This inner a is hoisted but not initialized until the line let a = 2; is executed.
+
+// The variable a is in the TDZ from the start of the block until its declaration line is reached.
+
+// When foo is created:
+// The arrow function foo references the inner a (because of lexical scoping), but at the time foo is defined, a is not yet initialized (still in TDZ).
+
+// When foo() is called:
+// At the time of the call foo(), the inner a has been initialized to 2, so foo() returns 2.
+// Solution
+// 2
