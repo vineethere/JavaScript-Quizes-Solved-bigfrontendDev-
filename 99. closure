@@ -1,0 +1,18 @@
+// https://bigfrontend.dev/quiz/closure-1
+
+let dev = 'bfe'
+
+function a() {
+  let dev = 'BFE'
+  return function() {
+    console.log(dev)
+  }
+}
+
+dev = 'bigfrontend'
+
+a()()
+
+
+// Solution
+// BFE
