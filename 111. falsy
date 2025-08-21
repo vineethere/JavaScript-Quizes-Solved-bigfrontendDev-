@@ -1,0 +1,21 @@
+// https://bigfrontend.dev/quiz/falsy
+
+
+
+console.log(!!'')
+console.log(!!{})
+console.log(!![])
+
+
+
+
+
+
+
+
+// Explanation
+// Objects are truthy even if they are empty
+//Solution
+// false
+// true
+// true
