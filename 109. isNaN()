@@ -1,0 +1,24 @@
+
+// https://bigfrontend.dev/quiz/isNaN
+const a = 'BFE.dev'
+const b = 1
+
+console.log(Number.isNaN(a))
+console.log(Number.isNaN(b))
+console.log(isNaN(a))
+console.log(isNaN(b))
+
+
+
+
+
+//Explanation
+// Number.isNaN(value) checks only if the value is exactly the NaN value (type-safe).
+
+// isNaN(value) first coerces the value to a number, then checks if it is NaN.
+
+//Solution
+// false
+// false
+// true
+// false
