@@ -1,0 +1,29 @@
+
+
+BFE// https://bigfrontend.dev/quiz/var-vs-let
+
+var a = 'BFE'
+let b = 'bigfrontend'
+console.log(this.a) 
+console.log(this.b)
+
+
+
+
+
+
+
+// Explanation:
+// 1. var a = 'BFE'
+// In the global scope, var creates a property on the global object.
+// In a browser, the global object is window (or this in global context).
+// So, this.a refers to the same value as a.
+// ✅ this.a → 'BFE'
+// 2. let b = 'bigfrontend'
+// let (and const) do not create a property on the global object.
+// So, this.b is undefined even though b is declared.
+// ❌ this.b → undefined
+
+
+// SOLUTION
+// BFE
