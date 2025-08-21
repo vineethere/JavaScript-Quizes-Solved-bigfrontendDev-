@@ -1,0 +1,47 @@
+// https://bigfrontend.dev/quiz/Promise-executor-IV
+
+
+const promise = new Promise((resolve, reject) => {
+  const promise2 = Promise.reject('error').then(() => {
+    console.log(1)
+  }, () => {
+    console.log(2)
+  })
+  resolve(promise2)
+});
+promise.then(console.log);
+
+
+// Solution
+// 2
+// undefined
+
+// Notes on JavaScript Promise Behavior:
+// Code:
+// const promise = new Promise((resolve, reject) => {
+//   const promise2 = Promise.reject('error').then(() => {
+//     console.log(1)
+//   }, () => {
+//     console.log(2)
+//   })
+//   resolve(promise2)
+// });
+// promise.then(console.log);
+
+// Key Concepts:
+// Promise.reject('error') creates a rejected promise immediately.
+// .then() can take two handlers:
+// First for resolved value.
+// Second for rejection (like a catch).
+// In this case, the rejection handler is triggered because the promise is rejected.
+// The rejection handler logs 2.
+// The handler does not throw an error, so it resolves the promise after handling.
+// The result of .then() is a resolved promise (because the error was caught and handled).
+// promise2 becomes a resolved promise.
+// The outer promise (promise) resolves with promise2.
+// When you resolve a promise with another promise, the outer one adopts the inner one’s state and result.
+// promise.then(console.log) logs the result of promise2.
+// Since the handler inside promise2 doesn't return a value, the result is undefined.
+// Final Output:
+// 2 is printed because the rejection handler runs.
+// undefined is printed because console.log is called with the resolved value of promise2, which is undefined.
