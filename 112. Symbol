@@ -1,0 +1,31 @@
+// https://bigfrontend.dev/quiz/Symbol
+const symbol = Symbol('BFE')
+
+const a = {
+  [symbol]: 'BFE',
+  BFE: 'BFE'
+}
+
+console.log(symbol in a)
+console.log('BFE' in a)
+console.log(Object.keys(a).length)
+
+
+
+
+
+
+// console.log(Object.keys(a).length)
+
+// 🔍 Object.keys() returns an array of the object's own enumerable string-keyed properties.
+
+// Symbol keys are not included.
+
+// Only 'BFE' is a string key.
+
+// ✅ So the result is: 1
+
+//SOLUTION
+// true
+// true
+// 1
