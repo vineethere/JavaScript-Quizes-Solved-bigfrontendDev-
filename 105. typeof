@@ -1,0 +1,19 @@
+// https://bigfrontend.dev/quiz/typeof
+
+const a = 'BFE.dev'
+if (!typeof a === 'string') {
+  console.log('string')
+} else {
+  console.log('not a string')
+}
+
+
+
+
+
+
+
+// Due to JavaScript operator precedence, this is evaluated as:
+// if ((!typeof a) === 'string')
+// Solution
+// not a string
