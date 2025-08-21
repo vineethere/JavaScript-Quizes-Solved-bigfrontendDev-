@@ -1,0 +1,51 @@
+// https://bigfrontend.dev/quiz/this-V
+
+const obj = {
+  prefix: 'BFE',
+  list: ['1', '2', '3'],
+  log() {
+    this.list.forEach(function (item) {
+      console.log(this.prefix + item);
+    });
+  },
+};
+
+obj.log();
+
+
+
+
+
+// 📝 JavaScript this Behavior – Notes from Debugging obj.log() Example
+// 🧠 The Scenario:
+
+// We had an object like this:
+// const obj = {
+//   prefix: 'BFE',
+//   list: ['1', '2', '3'],
+//   log() {
+//     this.list.forEach(function (item) {
+//       console.log(this.prefix + item);
+//     });
+//   },
+// };
+// obj.log();
+// 🔍 Problem:
+// The output was:
+// undefined1
+// undefined2
+// undefined3
+
+// 🔎 Why This Happens:
+// obj.log() is a method call, so inside the log() method, this refers to obj.
+// Therefore, this.list evaluates to ['1', '2', '3'] correctly.
+// However, inside the forEach callback (a regular function), this does not refer to obj.
+// Regular functions have their own this context.
+// In this case, this is either undefined (in strict mode) or the global object (in sloppy mode).
+// So, this.prefix inside the callback is undefined.
+// 💡 Key Insight:
+// Even though this.prefix fails, this.list works because it’s accessed inside the log() method, not the callback. That’s why the list isn’t undefined.
+// ✅ Valid Fixes (just for awareness, not applied here):
+// Use an arrow function for forEach to inherit this.
+// Store this in a variable like const self = this.
+// Use the second argument of forEach to bind this.
