@@ -1,0 +1,21 @@
+// https://bigfrontend.dev/quiz/push
+
+const a = [1,2,3]
+const b = a.push(4)
+const c = b.push(5)
+console.log(c)
+
+
+
+
+// const b = a.push(4)
+
+// The .push() method adds the element 4 to the array a.
+
+// But important: .push() returns the new length of the array, not the array itself.
+
+// So after this line, a is [1, 2, 3, 4], but b is 4 (the new length).
+
+//Solution
+
+// Error
