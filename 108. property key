@@ -1,0 +1,67 @@
+// http://bigfrontend.dev/quiz/property-key
+
+
+const obj = {}
+const a = { name: 'a'}
+const b = { name: 'b'}
+obj[a] = {...a}
+obj[b] = {...b}
+
+console.log(obj[a].name)
+console.log(obj[b].name)
+
+
+
+// 1. 🔑 Object keys in JavaScript
+// In JavaScript, regular objects ({}) can only have strings or symbols as keys.
+// If you try to use an object as a key (like obj[a] where a is an object), JavaScript will automatically convert that object to a string.
+// 2. 📦 What happens when you do obj[a] = { ...a }
+// Let's say:
+// const a = { name: 'a' };
+// const obj = {};
+// obj[a] = { ...a };
+// Since a is an object, JavaScript will do this internally:
+// obj[String(a)] = { name: 'a' };
+// String(a) becomes "[object Object]", so you're really doing:
+// obj["[object Object]"] = { name: 'a' };
+// 3. 🧨 What if you do it again with another object?
+// const b = { name: 'b' };
+// obj[b] = { ...b };
+// b is also an object.
+// It also turns into the same string "[object Object]".
+// So now you're doing:
+// obj["[object Object]"] = { name: 'b' }; // This overwrites the previous value
+// 4. 🔍 What happens when you log obj[a] and obj[b]?
+// console.log(obj[a].name); // 'b'
+// console.log(obj[b].name); // 'b'
+// Both obj[a] and obj[b] are really looking at the same key: "[object Object]"
+// The value was last set to { name: 'b' }, so that's what you get for both.
+// 5. 🚫 Misunderstanding about key names
+// Writing obj[a] = { name: 'a' } does not create a property like this:
+// obj = { a: { name: 'a' } }
+// That would only happen if you did:
+// obj = { a: { name: 'a' } } // literal key "a", as a string
+// JavaScript does not use variable names like a or b as the property name unless you write them as string literals or use computed property names properly.
+// 6. ✅ Correct way to use objects as keys: Map
+// Use a Map if you want to use objects as keys and keep them separate:
+// const a = { name: 'a' };
+// const b = { name: 'b' };
+
+// const map = new Map();
+// map.set(a, { ...a });
+// map.set(b, { ...b });
+
+// console.log(map.get(a).name); // 'a'
+// console.log(map.get(b).name); // 'b'
+
+
+// Map keeps track of object identity — it doesn’t convert keys to strings.
+
+// ✅ Final Summary (in plain words)
+// JavaScript converts object keys in {} to strings — even if you use variables.
+// Two different objects will turn into the same string key: "[object Object]".
+// That causes one to overwrite the other.
+// To keep objects as real keys, use Map.
+//Solution
+// b
+// b
