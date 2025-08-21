@@ -1,0 +1,43 @@
+// https://bigfrontend.dev/quiz/Equal-IV
+
+console.log([0] == '')
+console.log([0] == 0)
+
+
+
+
+// Let's break down what each of these JavaScript comparisons is doing:
+// 1. console.log([0] == '')
+// Result: false
+// Why?
+// This uses loose equality (==), so JavaScript performs type coercion to compare [0] and ''.
+// Here's how coercion happens:
+// [0] is an array. When compared to a primitive, it's coerced to a primitive:
+// [0].toString() → '0'
+// So the comparison becomes:
+// '0' == ''
+// JavaScript then compares two strings:
+// '0' != '' → false
+// ✅ Final result: false
+// 2. console.log([0] == 0)
+// Result: true
+// Why?
+// Again, JavaScript uses type coercion.
+// [0] is an array → [0].toString() → '0'
+// So comparison becomes:
+// '0' == 0
+// Now '0' (string) is coerced to number:
+// Number('0') → 0
+// So:
+// 0 == 0 → true
+// ✅ Final result: true
+
+
+
+
+
+
+
+//Solution
+// false
+// true
