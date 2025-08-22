@@ -1,0 +1,23 @@
+// https://bigfrontend.dev/quiz/parseInt-II
+
+
+
+console.log(parseInt(' 1'))
+console.log(parseInt(' 00001'))
+console.log(parseInt(' 0100'))
+console.log(parseInt(' 1e2 '))
+
+
+
+// console.log(parseInt(' 1e2 '))
+// Input: ' 1e2 ' (scientific notation string)
+// parseInt only parses until it hits an invalid character for an integer
+// '1e2' is valid as a number, but parseInt doesn’t handle scientific notation
+// It sees '1', then stops at 'e' which is not a valid digit
+// So, it just parses '1'
+//SOLUTION
+
+// 1
+// 1
+// 100
+// 1
