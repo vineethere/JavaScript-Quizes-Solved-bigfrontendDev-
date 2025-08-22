@@ -1,0 +1,16 @@
+// https://bigfrontend.dev/quiz/strict
+
+function a() {
+  'use strict'
+  dev = 'BFE'
+  console.log(dev)
+}
+
+a()
+
+
+
+
+// Uncaught ReferenceError: dev is not defined
+//     at a (about:srcdoc:51:7)
+//     at about:srcdoc:55:1
