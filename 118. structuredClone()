@@ -1,0 +1,106 @@
+// https://bigfrontend.dev/quiz/structuredclone
+
+
+const error = new Error('😢')
+error.name = 'SyntaxError'
+console.log(error instanceof Error)
+console.log(error instanceof SyntaxError)
+
+const clonededError = structuredClone(error)
+console.log(clonededError instanceof Error)
+console.log(clonededError instanceof SyntaxError)
+
+
+
+
+
+
+
+
+
+
+
+// 📘 Notes on structuredClone() with Error and SyntaxError
+// ✅ Overview of the Code
+// const error = new Error('😢')
+// error.name = 'SyntaxError'
+
+// console.log(error instanceof Error)         // true
+// console.log(error instanceof SyntaxError)   // false
+
+// const clonededError = structuredClone(error)
+
+// console.log(clonededError instanceof Error)         // true
+// console.log(clonededError instanceof SyntaxError)   // true
+
+// 🧠 Key Concepts
+// 1. instanceof
+
+// instanceof checks if an object is an instance of a certain class via its prototype chain.
+
+// Just changing the .name property (like setting it to "SyntaxError") does not change the actual class or prototype.
+
+// 2. structuredClone()
+
+// A built-in JavaScript function used to deeply copy objects.
+
+// Supports many built-in types.
+
+// In modern JavaScript engines (like recent versions of Chrome and Node.js), it can clone Error objects while preserving their prototypes.
+
+// 📌 Behavior Before Cloning
+
+// error instanceof Error → true (because it's created using new Error()).
+
+// error instanceof SyntaxError → false (changing .name doesn’t change the actual type).
+
+// 🧪 Behavior After Cloning
+
+// In modern environments, structuredClone() preserves the prototype of standard errors.
+
+// Since .name was "SyntaxError", the JS engine may "upgrade" the cloned object to a SyntaxError type.
+
+// As a result:
+
+// clonededError instanceof Error → true
+
+// clonededError instanceof SyntaxError → true
+
+// This behavior may vary in older environments, where structuredClone() may return a plain object without the error prototype.
+
+// 🔬 Things to Test or Inspect
+// console.log(clonededError.constructor.name)
+// // Likely output: "SyntaxError"
+
+// console.log(Object.getPrototypeOf(clonededError))
+// // Likely output: SyntaxError.prototype
+
+// ⚠️ Cross-Environment Behavior
+
+// Modern JavaScript engines (Chrome 123+, Node.js 20+) support this upgraded cloning behavior.
+
+// Older versions may not — in those cases, cloned errors lose their prototype and become plain objects.
+
+// 🛠️ Optional: Manual Cloning if You Need Compatibility
+
+// If you want to ensure prototype is preserved across environments:
+
+// function cloneError(error) {
+//   const Cls = error.constructor || Error
+//   const clone = new Cls(error.message)
+//   clone.name = error.name
+//   clone.stack = error.stack
+//   return clone
+// }
+
+
+// This manual method guarantees the clone has the right type.
+
+
+
+
+// SOLUTION
+// true
+// false
+// true
+// true
