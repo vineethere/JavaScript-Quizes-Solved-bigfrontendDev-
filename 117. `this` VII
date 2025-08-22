@@ -1,0 +1,32 @@
+👀 First line: B.log()
+
+This is a static method.
+
+Inside it: console.log(this.dev)
+
+this is the class B, so:
+
+this.dev === B.dev
+
+
+Where does B.dev come from?
+
+Since B extends A, and A has static dev = 'BFE', B inherits that unless overridden.
+
+So B.dev === 'BFE'.
+
+🟢 Output:
+
+BFE
+
+👀 Second line: new B().log()
+
+This creates an instance of class B, which inherits from A.
+
+log() is an instance method: console.log(this.dev)
+
+this refers to the instance of B.
+
+What does this.dev refer to?
+
+Inside the instance, the property dev = 'bigfrontend' is set from class A.
