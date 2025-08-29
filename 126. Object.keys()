@@ -1,0 +1,35 @@
+// https://bigfrontend.dev/quiz/object-keys
+
+console.log([
+  ...Object.keys({a: 1, b: 2}),
+  ...Object.keys({b: 2, a: 1})
+])
+// The code you've written combines the keys of two objects using the spread operator. However, since the objects have the same keys (a and b), you’ll get the keys in the order they appear in the original object.
+
+// Here’s the breakdown:
+// Object.keys({a: 1, b: 2}) gives you ["a", "b"]
+// Object.keys({b: 2, a: 1}) gives you ["b", "a"]
+// When you combine them with the spread operator (...), you end up with the following array:
+// ["a", "b", "b", "a"]
+// So, the result of this console.log would be:
+// ["a", "b", "b", "a"]
+
+
+// If you were expecting unique keys, you could remove duplicates by using a Set like this:
+
+// console.log([...new Set([
+//   ...Object.keys({a: 1, b: 2}),
+//   ...Object.keys({b: 2, a: 1})
+// ])])
+
+
+// This would give:
+// ["a", "b"]
+// By messaging ChatGPT, you agree to our Terms and have read our Privacy Policy. See Cookie Preferences.
+// Don't share sensitive info. Chats may be reviewed and used to train our models. Learn more
+
+
+
+
+// SOLUTION
+// [ 'a', 'b', 'b', 'a' ]
