@@ -1,0 +1,19 @@
+https://bigfrontend.dev/quiz/comma-2
+
+const a = (1,2,3)
+console.log(a)
+
+
+// In JavaScript, the expression (1, 2, 3) is a comma operator. It evaluates all the operands from left to right and returns the value of the last operand.
+
+// So, in your example:
+
+// const a = (1, 2, 3);
+// console.log(a);
+
+
+// The value of a will be 3, because that's the last value in the comma expression.
+
+// When you run this, the output will be:
+
+// 3
