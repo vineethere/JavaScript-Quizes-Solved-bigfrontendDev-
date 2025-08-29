@@ -1,0 +1,16 @@
+// https://bigfrontend.dev/quiz/json-stringify-ii
+
+console.log(JSON.stringify(undefined))
+console.log(JSON.stringify([undefined]))
+
+// Here's what happens with each JSON.stringify() call:
+// console.log(JSON.stringify(undefined))
+// This will output undefined. When you try to stringify undefined, it results in a null value in the JSON format, so the output will be:
+
+// undefined
+
+
+// console.log(JSON.stringify([undefined]))
+// When you try to stringify an array containing undefined, the undefined value inside the array is replaced with null in the JSON format. So the output will be:
+
+// [null]
