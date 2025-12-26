@@ -27,3 +27,4 @@ console.log(this.b)
 
 // SOLUTION
 // BFE
+// undefined
