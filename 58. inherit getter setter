@@ -1,19 +1,44 @@
 
 // https://bigfrontend.dev/quiz/inherit-getter-setter
 
+// This is a JavaScript Quiz from BFE.dev
 
-// let val = 0
+let val = 0
 
-// class A {
-//   set foo(_val) { val = _val }
-//   get foo() { return val }
-// }
+class A {
+  set foo(_val) {
+    val = _val
+  }
+  get foo() {
+    return val
+  }
+}
 
-// class B extends A { }
+class B extends A { }
 
-// class C extends A {
-//   get foo() { return val }
-// }
+class C extends A {
+  get foo() {
+    return val
+  }
+}
+
+const b = new B()
+console.log(b.foo)
+b.foo = 1
+console.log(b.foo)
+
+const c = new C()
+console.log(c.foo)
+c.foo = 2
+console.log(c.foo)
+console.log(b.foo)
+
+
+
+
+
+
+
 // Key Concepts:
 // JavaScript getter/setter pairs must be defined together if you want both to work. If a class overrides just the getter or just the setter, it replaces the whole property and the other part is lost.
 
